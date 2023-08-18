@@ -13,13 +13,14 @@ public class CourseJdbcRepository {
     private static final String DELETE_QUERY =
             "DELETE FROM course WHERE id = ?;";
 
-    private static final String SELECT_QUERY = "SELECT * FROM course WHERE id=?;";
+    private static final String SELECT_QUERY =
+            "SELECT * FROM course WHERE id=?;";
     public CourseJdbcRepository(JdbcTemplate springJdbcTemplete) {
         this.springJdbcTemplete = springJdbcTemplete;
     }
 
     public void insert(Course course){
-        springJdbcTemplete.update(INSERT_QUERY, course.id(),course.name(),course.author());
+        springJdbcTemplete.update(INSERT_QUERY, course.getId(),course.getName(),course.getAuthor());
     }
     public void deleteById(long id){
         springJdbcTemplete.update(DELETE_QUERY, id);
